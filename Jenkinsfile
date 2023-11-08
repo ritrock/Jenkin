@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent none
+
+	options {
+		disableConcurrentBuilds()
+	}
 
   triggers {
         cron('0,7,14,21,28,35,42,49,56 * * * *')
