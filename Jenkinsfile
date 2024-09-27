@@ -9,7 +9,7 @@ pipeline {
             agent {
                 kubernetes {
                     label 'build-test'
-                    defaultContainer 'python'
+                    defaultContainer 'jnlp'
                     yaml """
                     apiVersion: v1
                     kind: Pod
