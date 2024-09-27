@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-            label 'build-${UUID.randomUUID().toString()}'
+            label 'build-test'
             defaultContainer 'pyhton'
             yaml """
             apiVersion: v1
