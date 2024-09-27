@@ -1,14 +1,11 @@
 pipeline {
     agent {
         kubernetes {
-            label 'python-pod'
+            label 'build-${UUID.randomUUID().toString()}'
             defaultContainer 'jnlp'
             yaml """
             apiVersion: v1
             kind: Pod
-            metadata:
-              labels:
-                some-label: python
             spec:
               containers:
               - name: python
