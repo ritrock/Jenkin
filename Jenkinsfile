@@ -1,7 +1,7 @@
 pipeline {
     agent none
     options {
-        disableCocurrentBuilds()
+        disableConcurrentBuilds()
     }
 
     stages {
