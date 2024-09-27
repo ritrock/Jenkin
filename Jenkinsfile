@@ -8,7 +8,7 @@ pipeline {
         stage('Run Python Script') {
             agent {
                 kubernetes {
-                    label 'build-test'
+                    label 'python-agent'
                     defaultContainer 'jnlp'
                     yaml """
                     apiVersion: v1
