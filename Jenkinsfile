@@ -1,23 +1,27 @@
 pipeline {
-    agent {
-        kubernetes {
-            label 'build-test'
-            defaultContainer 'pyhton'
-            yaml """
-            apiVersion: v1
-            kind: Pod
-            spec:
-              containers:
-              - name: python
-                image: python:3.8
-                command: ['cat']
-                tty: true
-            """
-        }
+    agent none
+    options {
+        disableCocurrentBuilds()
     }
 
     stages {
         stage('Run Python Script') {
+            agent {
+                kubernetes {
+                    label 'build-test'
+                    defaultContainer 'python'
+                    yaml """
+                    apiVersion: v1
+                    kind: Pod
+                    spec:
+                      containers:
+                      - name: python
+                        image: python:3.8-slim
+                        command: ['cat']
+                        tty: true
+                    """
+                }
+            }
             steps {
                 container('python') {
                     script {
